@@ -1,0 +1,121 @@
+.contact-section {
+    padding: 60px 20px;
+    background-color: #acbac7;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: auto;
+    gap: 40px;
+  }
+  
+  @media (min-width: 768px) {
+    .contact-container {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+  
+  .contact-left {
+    flex: 1;
+  }
+  
+  .contact-subtitle {
+    color: #f97316;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  .contact-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 30px;
+  }
+  
+  .contact-title span {
+    color: #f97316;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #1e3a8a;
+    outline: none;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 20px;
+  }
+  
+  @media (max-width: 600px) {
+    .form-row {
+      flex-direction: column;
+    }
+  }
+  
+  .send-button {
+    background-color: #f97316;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .send-button:hover {
+    background-color: #ea580c;
+  }
+  
+  .contact-right {
+    flex: 0.8;
+    background-color: #1e3a8a;
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    font-size: 14px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-right p {
+    margin-bottom: 20px;
+  }
+  
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
+  .social-icons i {
+    color: white;
+    background-color: #f97316;
+    padding: 10px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .social-icons i:hover {
+    transform: scale(1.1);
+    background-color: #ea580c;
+  }
+  

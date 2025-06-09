@@ -1,0 +1,273 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Variables */
+:root {
+  --primary-color-accent: #ff7f00; /* Orange accent */
+  --dark-bg-color: #1c1c1c; /* Dark background from screenshot */
+  --card-bg-color: #2a2a2a; /* Slightly lighter dark for cards */
+  --text-light: #f0f0f0;
+  --text-muted-dark: #b0b0b0; /* Lighter text for dark backgrounds */
+  --border-radius-default: 8px;
+  --transition-speed: 0.3s;
+  --dark-bg-gradient-start: #1c1c1c; /* For background animation */
+  --dark-bg-gradient-end: #0f0f0f;   /* For background animation */
+}
+
+/* Basic Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--text-light); /* Default body text for a dark theme */
+  line-height: 1.6;
+}
+
+/* Projects Section */
+.projects-section { /* Renamed class */
+  padding: 80px 0;
+  background-color: var(--dark-bg-color); /* Fallback background */
+  position: relative;
+  overflow: hidden; /* Crucial for background animation */
+  text-align: center;
+  color: var(--text-light);
+
+  /* Initial state for fade-in */
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.projects-section.fade-in {
+  opacity: 1;
+}
+
+/* Background Animation Layer */
+.projects-bg-animation { /* Renamed class */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--dark-bg-gradient-start) 0%, var(--dark-bg-gradient-end) 100%);
+  background-size: 200% 200%; /* Make gradient larger than container */
+  animation: bgPanDark 20s ease infinite alternate; /* Adjust duration as needed */
+  z-index: 0; /* Keep it behind content */
+}
+
+@keyframes bgPanDark {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.projects-container { /* Renamed class */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative; /* Bring content above background */
+  z-index: 1;
+}
+
+.projects-title { /* Renamed class */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3em;
+  font-weight: 700;
+  color: var(--text-light); /* White for the title */
+  margin-bottom: 60px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  /* Initial state for fade-in */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.projects-title.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Carousel Wrapper for overflow and shadow */
+.projects-wrapper { /* Renamed class */
+    position: relative;
+    padding-bottom: 20px; /* Space for shadow */
+}
+
+/* Subtle gradient shadows for the ends of the carousel */
+.projects-wrapper::before, /* Renamed class */
+.projects-wrapper::after { /* Renamed class */
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 80px; /* Width of the fade effect */
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: 2; /* Above the scrollable content */
+}
+
+.projects-wrapper::before { /* Renamed class */
+    left: 0;
+    background: linear-gradient(to right, var(--dark-bg-color), transparent);
+}
+
+.projects-wrapper::after { /* Renamed class */
+    right: 0;
+    background: linear-gradient(to left, var(--dark-bg-color), transparent);
+}
+
+
+/* Main Scrollable Area */
+.projects-scroll { /* Renamed class */
+  display: flex; /* Makes items display in a row */
+  gap: 30px; /* Space between cards */
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  scroll-snap-type: x mandatory; /* Snap to cards */
+  -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS */
+  padding-bottom: 20px; /* To prevent scrollbar from hiding content */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.projects-scroll::-webkit-scrollbar { /* Renamed class */
+  display: none;
+}
+
+/* Individual Project Card */
+.project-card { /* Renamed class */
+  flex-shrink: 0; /* Prevent cards from shrinking */
+  width: 350px; /* Fixed width for each card, adjust as needed */
+  background-color: var(--card-bg-color); /* Dark background for cards */
+  border-radius: var(--border-radius-default);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4); /* Darker shadow */
+  overflow: hidden;
+  text-align: left;
+  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+  cursor: grab; /* Indicate draggable content */
+  scroll-snap-align: center; /* Snap to the center of the card */
+
+  /* Initial state for slide-up-in animation */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Staggered animation using custom property for initial load */
+.projects-section.fade-in .project-card.slide-up-in { /* Renamed class */
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out var(--animation-delay), transform 0.6s ease-out var(--animation-delay);
+}
+
+
+.project-card:hover { /* Renamed class */
+  transform: translateY(-8px) scale(1.02); /* Lift and slight scale on hover */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6); /* Enhanced shadow */
+  cursor: grabbing; /* Indicate currently dragging */
+}
+
+/* Project Image Wrapper */
+.project-image-wrapper { /* Renamed class */
+  position: relative;
+  width: 100%;
+  padding-bottom: 75%; /* Aspect ratio (e.g., 4:3) */
+  overflow: hidden;
+}
+
+.project-image { /* Renamed class */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease; /* Smooth zoom on hover */
+}
+
+/* Overlay for hover effect */
+.project-overlay { /* Renamed class */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Start transparent */
+  transition: background-color 0.4s ease;
+}
+
+.project-card:hover .project-image { /* Renamed class */
+  transform: scale(1.1); /* More noticeable zoom */
+}
+
+.project-card:hover .project-overlay { /* Renamed class */
+  background-color: rgba(0, 0, 0, 0.3); /* Darken overlay on hover */
+}
+
+/* Project Name below image */
+.project-name { /* Renamed class */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--text-light);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .projects-title { /* Renamed class */
+    font-size: 2.5em;
+  }
+
+  .project-card { /* Renamed class */
+    width: 300px; /* Slightly smaller cards */
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section { /* Renamed class */
+    padding: 60px 0;
+  }
+
+  .projects-title { /* Renamed class */
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+
+  .projects-scroll { /* Renamed class */
+    padding-bottom: 15px; /* Adjust for smaller screens */
+  }
+
+  .project-card { /* Renamed class */
+    width: 280px; /* Even smaller cards for tighter fit */
+  }
+
+  .projects-wrapper::before, /* Renamed class */
+  .projects-wrapper::after { /* Renamed class */
+      width: 50px; /* Smaller fade effect */
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-title { /* Renamed class */
+    font-size: 1.8em;
+  }
+
+  .projects-section { /* Renamed class */
+    padding: 40px 0;
+  }
+
+  .project-card { /* Renamed class */
+    width: 90vw; /* Make cards take up most of the viewport width */
+  }
+}

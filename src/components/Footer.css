@@ -1,0 +1,371 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Variables for consistent styling */
+:root {
+  --footer-dark-blue: #1a2a40; /* Main footer background */
+  --footer-cta-blue: #2a3a78; /* CTA bar background */
+  --footer-orange-accent: #ff7f00; /* Orange buttons/accents */
+  --footer-text-light: #e0e6ed; /* Light text color */
+  --footer-text-muted: #aebacd; /* Muted text color */
+  --footer-bottom-bar-bg: #e67300; /* Orange for bottom bar */
+  --border-radius-default: 8px;
+  --transition-speed: 0.3s;
+}
+
+/* Basic Resets (ensure these are applied globally or in your main CSS) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+  color: var(--footer-text-light); /* Default text color for footer */
+}
+
+/* Footer Container - for max-width and centering */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Horizontal padding */
+}
+
+/* --- Top CTA Bar --- */
+.footer-cta-bar {
+  background-color: var(--footer-cta-blue);
+  padding: 40px 0; /* Vertical padding */
+  color: var(--footer-text-light);
+  text-align: center;
+}
+
+.footer-cta-bar .footer-container {
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px; /* Space between title and button */
+}
+.footer-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--footer-orange-accent);
+  margin-bottom: 20px;
+}
+
+.logo-text {
+  color: var(--footer-orange-accent);
+  letter-spacing: 0.5px;
+}
+
+
+.cta-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2em;
+  font-weight: 700;
+  color: var(--footer-text-light);
+  flex-grow: 1; /* Allows title to take available space */
+  text-align: left; /* Align title to left */
+}
+
+.contact-us-button {
+  background-color: var(--footer-orange-accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--border-radius-default);
+  padding: 15px 30px;
+  font-size: 1.1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-us-button:hover {
+  background-color: #e67300; /* Slightly darker orange */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Main Footer Content --- */
+.footer-content {
+  background-color: var(--footer-dark-blue);
+  padding: 60px 0; /* Vertical padding */
+  color: var(--footer-text-light);
+}
+
+.footer-content .footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+  gap: 40px; /* Space between columns */
+  text-align: left; /* Default text alignment for columns */
+}
+
+.footer-column {
+  padding-right: 15px; /* Slight padding for content within columns */
+}
+
+.column-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3em;
+  font-weight: 600;
+  color: var(--footer-text-light);
+  margin-bottom: 25px;
+}
+
+/* Brand Info Column */
+.brand-info .footer-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: 700;
+  color: var(--footer-text-light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.brand-info .logo-icon {
+  background-color: var(--footer-orange-accent);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.brand-info .brand-description {
+  font-size: 0.95em;
+  color: var(--footer-text-muted);
+  margin-bottom: 25px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: var(--footer-text-light);
+  font-size: 1.5em;
+  transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.social-icons a:hover {
+  color: var(--footer-orange-accent);
+  transform: translateY(-3px);
+}
+
+/* Navigation & Contact Details Columns */
+.navigation ul,
+.contact-details p {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation li {
+  margin-bottom: 12px;
+}
+
+.navigation a,
+.contact-details a,
+.contact-details p {
+  color: var(--footer-text-muted);
+  text-decoration: none;
+  font-size: 0.95em;
+  transition: color var(--transition-speed) ease;
+}
+
+.navigation a:hover,
+.contact-details a:hover {
+  color: var(--footer-orange-accent);
+}
+
+/* Newsletter Column */
+.newsletter-form {
+  display: flex;
+  border-radius: var(--border-radius-default);
+  overflow: hidden; /* Ensures input and button corners are rounded together */
+  background-color: rgba(255, 255, 255, 0.1); /* Light background for input */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-form input {
+  flex-grow: 1; /* Input takes most space */
+  border: none;
+  outline: none;
+  padding: 12px 15px;
+  font-size: 0.95em;
+  color: var(--footer-text-light);
+  background: transparent;
+}
+
+.newsletter-form input::placeholder {
+  color: var(--footer-text-muted);
+}
+
+.newsletter-submit-button {
+  background-color: var(--footer-orange-accent);
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color var(--transition-speed) ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newsletter-submit-button:hover {
+  background-color: #e67300;
+}
+
+/* --- Bottom Copyright Bar --- */
+.footer-bottom-bar {
+  background-color: var(--footer-bottom-bar-bg); /* Orange background */
+  color: #fff;
+  padding: 20px 0;
+  font-size: 0.9em;
+}
+
+.footer-bottom-bar .footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px; /* Space between copyright and links */
+}
+
+.terms-privacy-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 5px;
+  transition: text-decoration var(--transition-speed) ease;
+}
+
+.terms-privacy-links a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .footer-content .footer-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust columns for tablets */
+  }
+
+  .cta-title {
+    font-size: 1.8em;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-cta-bar .footer-container {
+    flex-direction: column; /* Stack CTA elements */
+    text-align: center;
+  }
+
+  .cta-title {
+    text-align: center;
+    font-size: 1.6em;
+    margin-bottom: 15px;
+  }
+
+  .contact-us-button {
+    width: 100%; /* Full width button */
+    max-width: 250px; /* Limit max width */
+  }
+
+  .footer-content {
+    padding: 40px 0;
+  }
+
+  .footer-content .footer-container {
+    grid-template-columns: 1fr; /* Stack all columns */
+    gap: 30px;
+  }
+
+  .footer-column {
+    text-align: center; /* Center text for stacked columns */
+    padding-right: 0;
+  }
+
+  .brand-info .footer-logo {
+    justify-content: center; /* Center logo */
+  }
+
+  .social-icons {
+    justify-content: center; /* Center social icons */
+  }
+
+  .newsletter-form {
+    max-width: 350px; /* Limit newsletter form width */
+    margin: 0 auto; /* Center newsletter form */
+  }
+
+  .footer-bottom-bar .footer-container {
+    flex-direction: column; /* Stack bottom bar elements */
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-cta-bar {
+    padding: 30px 0;
+  }
+
+  .cta-title {
+    font-size: 1.4em;
+  }
+
+  .contact-us-button {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+
+  .footer-content {
+    padding: 30px 0;
+  }
+
+  .column-title {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+
+  .brand-info .footer-logo {
+    font-size: 1.8em;
+  }
+
+  .brand-info .logo-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.3em;
+  }
+
+  .social-icons a {
+    font-size: 1.3em;
+  }
+
+  .newsletter-form input,
+  .newsletter-submit-button {
+    padding: 10px 12px;
+    font-size: 0.85em;
+  }
+
+  .newsletter-submit-button {
+    font-size: 1em;
+  }
+
+  .footer-bottom-bar {
+    padding: 15px 0;
+    font-size: 0.8em;
+  }
+}

@@ -1,0 +1,355 @@
+/* ALL @import statements MUST come first */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+/* Variables for easier theme management */
+:root {
+  --primary-orange: #ff7f00; /* Example primary button color */
+  --secondary-blue: #2a3a78; /* Example mission card background */
+  --text-dark: #333;
+  --text-light: #f0f0f0;
+  --heading-font: 'Roboto', sans-serif; /* Example font */
+  --body-font: 'Open Sans', sans-serif; /* Example font */
+  --border-radius-default: 8px;
+}
+
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--body-font);
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+
+/* Utility Class */
+.container {
+  max-width: 1200px; /* Adjust as per your layout */
+  margin: 0 auto;
+  padding: 0 20px; /* Horizontal padding for responsiveness */
+}
+
+/* Section Styling */
+.who-we-are-section {
+  padding: 80px 0; /* Adjust vertical padding */
+  background-color: #f7f7f7; /* Light background similar to screenshot */
+  overflow: hidden; /* To handle potential overflows from absolute positioning */
+  position: relative; /* For the top-right image to be positioned */
+}
+
+/* Top Right Image (Crane hook) */
+.who-we-are-section::before {
+  content: '';
+  position: absolute;
+  top: -50px; /* Adjust as needed */
+  right: 50px; /* Adjust as needed */
+  width: 200px; /* Adjust size */
+  height: 200px; /* Adjust size */
+  /* --- REPLACE THIS WITH YOUR ACTUAL CRANE HOOK IMAGE URL --- */
+  background: url('https://via.placeholder.com/200x200/cccccc/000000?text=Crane+Hook') no-repeat center center / contain;
+  /* --- END REPLACE --- */
+  z-index: 1; /* Ensure it's above other elements if needed */
+}
+
+
+/* Content Area */
+.who-we-are-content {
+  max-width: 700px; /* Adjust width of the text content */
+  margin-bottom: 60px; /* Space between top content and bottom cards */
+  position: relative; /* For subtitle line */
+  z-index: 2; /* Ensure text is above background elements */
+}
+
+.section-subtitle {
+  color: var(--primary-orange);
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px; /* Space for the line */
+}
+
+.section-subtitle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 15px; /* Length of the line */
+  height: 3px; /* Thickness of the line */
+  background-color: var(--primary-orange);
+  border-radius: 2px;
+}
+
+.section-title {
+  font-family: var(--heading-font);
+  font-size: 3.5em; /* Adjust font size */
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.section-description {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 30px;
+  max-width: 550px; /* Limit width for readability */
+}
+
+/* Action Buttons */
+.section-actions {
+  display: flex;
+  gap: 15px; /* Space between buttons */
+  align-items: center;
+}
+
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: var(--border-radius-default);
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; /* In case you use <a> as button */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: var(--primary-orange);
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(255, 127, 0, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: #e67300; /* Slightly darker orange */
+  box-shadow: 0 6px 12px rgba(255, 127, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 50px; /* Fixed width/height for circular */
+  height: 50px;
+  padding: 0; /* Remove padding for icon buttons */
+  border-radius: 50%; /* Circular button */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon img {
+  width: 20px; /* Size of the arrow icon */
+  height: 20px;
+}
+
+.btn-icon:hover {
+  background-color: #f0f0f0;
+  border-color: #ccc;
+  transform: translateY(-2px);
+}
+
+/* Bottom Cards Layout */
+.who-we-are-bottom {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  gap: 30px; /* Space between cards */
+  align-items: stretch; /* Make cards same height */
+  position: relative;
+  z-index: 2; /* Ensure cards are above background elements */
+}
+
+/* Image Card */
+.image-card {
+  flex: 1; /* Take available space */
+  min-width: 300px; /* Minimum width before wrapping */
+  position: relative;
+  border-radius: var(--border-radius-default);
+  overflow: hidden; /* Important for image and badge */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.handshake-image {
+  width: 100%;
+  height: 100%; /* Make image fill the card */
+  object-fit: cover; /* Cover the area, crop if necessary */
+  display: block;
+}
+
+.experience-badge {
+  position: absolute;
+  bottom: 20px; /* Distance from bottom */
+  left: 20px; /* Distance from left */
+  background-color: var(--primary-orange);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: var(--border-radius-default);
+  font-size: 2.2em; /* Large "25+" */
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Space between number and text */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  line-height: 1; /* For cleaner line spacing */
+}
+
+.experience-badge .years-text {
+  font-size: 0.4em; /* Smaller "Years of Experience" */
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Mission Card */
+.mission-card {
+  flex: 1; /* Take available space */
+  min-width: 300px; /* Minimum width before wrapping */
+  background-color: var(--secondary-blue);
+  color: var(--text-light);
+  padding: 40px; /* Internal padding */
+  border-radius: var(--border-radius-default);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push footer to bottom */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Soft shadow */
+  transition: transform 0.3s ease;
+}
+
+.mission-card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.mission-text {
+  font-size: 1.05em;
+  line-height: 1.7;
+  margin-bottom: 30px; /* Space before footer */
+  color: #c9d0d8; /* Slightly lighter text color */
+}
+
+.mission-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Push to bottom if content is short */
+}
+
+.mission-title {
+  font-family: var(--heading-font);
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.btn-dark {
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent white */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-dark:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn-dark img {
+  filter: brightness(0) invert(1); /* Make arrow white for dark background */
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .section-title {
+    font-size: 2.8em;
+  }
+
+  .who-we-are-bottom {
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center;
+  }
+
+  .image-card,
+  .mission-card {
+    width: 100%; /* Full width on smaller screens */
+    max-width: 500px; /* Limit max width for stacking */
+  }
+
+  .who-we-are-section::before {
+    right: 0; /* Adjust position */
+    top: -20px;
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .who-we-are-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2.2em;
+  }
+
+  .section-description {
+    font-size: 1em;
+  }
+
+  .who-we-are-content {
+    margin-bottom: 40px;
+    padding: 0 15px; /* Add padding to content */
+  }
+
+  .image-card,
+  .mission-card {
+    padding: 30px; /* Adjust padding for cards */
+  }
+
+  .experience-badge {
+    bottom: 15px;
+    left: 15px;
+    font-size: 1.8em;
+    padding: 12px 20px;
+  }
+
+  .btn-icon {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8em;
+  }
+
+  .section-actions {
+    flex-direction: column; /* Stack buttons */
+    align-items: flex-start;
+  }
+
+  .btn {
+    width: 100%; /* Full width buttons */
+  }
+  .btn-icon {
+    width: 100%; /* Still need specific width for icon */
+    max-width: 50px; /* Prevent it from stretching too much */
+  }
+
+  .experience-badge {
+    font-size: 1.5em;
+    padding: 10px 15px;
+  }
+
+  .mission-card {
+    padding: 25px;
+  }
+}

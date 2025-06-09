@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f1f1f1;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  display: block; /* or remove display:flex and place-items */
+}
